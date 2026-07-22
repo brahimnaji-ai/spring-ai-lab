@@ -3,15 +3,30 @@ spring:
     name: spring-ai-lab
   config:
     import: optional:file:.env[.properties]
+
   ai:
-    model:
-      chat: google-genai
+    # GEMINI Config
     google:
       genai:
         api-key: ${GENAI_API_KEY}
         project-id: ${PROJECT_ID}
         chat:
-          model: ${CHAT_MODEL}
+          model: ${GENAI_CHAT_MODEL}
+    # ANTHROPIC Config
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY}
+      chat:
+        model: ${ANTHROPIC_CHAT_MODEL}
+        max-tokens: 1024
+    # OLLAMA Config
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: qwen2.5-coder:7b
 server:
-  port: 9090
+  port: 8080
+
+#logging:
+#  level:
+#    root: DEBUG
 
