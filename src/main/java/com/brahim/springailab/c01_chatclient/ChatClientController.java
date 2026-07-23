@@ -25,12 +25,12 @@ import java.util.stream.Collectors;
  * but for simplicity-demo, I won't.*/
 @RequestMapping("/chat-client")
 @Slf4j
-public class MyController {
+public class ChatClientController {
 
     private final ChatClient chatClient;
     private final String CHAT_CLIENT_NAME = "ChatClientWithDefaultSystemWithParameters";
 
-    public MyController(@Qualifier(CHAT_CLIENT_NAME) ChatClient chatClient) {
+    public ChatClientController(@Qualifier(CHAT_CLIENT_NAME) ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 
