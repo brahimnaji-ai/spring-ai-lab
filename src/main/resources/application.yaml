@@ -29,4 +29,15 @@ server:
 #logging:
 #  level:
 #    root: DEBUG
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
 
+    com:
+      brahim:
+        springailab: DEBUG
