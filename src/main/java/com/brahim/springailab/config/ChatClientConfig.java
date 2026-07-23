@@ -1,9 +1,9 @@
 package com.brahim.springailab.config;
 
-import org.springframework.ai.anthropic.AnthropicChatModel;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.google.genai.GoogleGenAiChatModel;
-import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,7 +31,18 @@ public class ChatClientConfig {
         return ChatClient.create(model);
     }
     @Bean
-    public ChatClient anthropicChatClient(AnthropicChatModel model){return ChatClient.create(model);}
-    @Bean
-    public ChatClient ollamaChatClient(OllamaChatModel model){return ChatClient.create(model);}
+    public ChatMemory inMemoryChatMemory(){
+        /**
+         * MessageWindowChatMemory is now the recommended in-memory chat memory implementation.
+         * By default, it uses an InMemoryChatMemoryRepository internally if you don't provide
+         * another repository.
+         * */
+        return MessageWindowChatMemory.builder()
+                .maxMessages(10)
+                .build();
+    }
+//    @Bean
+//    public ChatClient anthropicChatClient(AnthropicChatModel model){return ChatClient.create(model);}
+//    @Bean
+//    public ChatClient ollamaChatClient(OllamaChatModel model){return ChatClient.create(model);}
 }
