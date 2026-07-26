@@ -5,6 +5,11 @@ spring:
     import: optional:file:.env[.properties]
 
   ai:
+    stabilityai:
+      api-key: ${STABILITY_API_KEY}
+      image:
+        n: 1 # Generate one image  1<n<=10.
+        model: sd3.5-flash
     # GEMINI Config
     google:
       genai:
@@ -12,6 +17,7 @@ spring:
         project-id: ${PROJECT_ID}
         chat:
           model: ${GENAI_CHAT_MODEL}
+
     # ANTHROPIC Config
     anthropic:
       api-key: ${ANTHROPIC_API_KEY}
@@ -23,21 +29,30 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: qwen2.5-coder:7b
+
 server:
   port: 8080
+
+
+
+
 
 #logging:
 #  level:
 #    root: DEBUG
-logging:
-  level:
-    org:
-      springframework:
-        ai:
-          chat:
-            client:
-              advisor: DEBUG
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        ai:
+#          chat:
+#            client:
+#              advisor: DEBUG
+#
+#    com:
+#      brahim:
+#        springailab: DEBUG
 
-    com:
-      brahim:
-        springailab: DEBUG
+#    #OPENAI Config
+#    openai:
+#      api-key: ${OPENAI_API_KEY}
