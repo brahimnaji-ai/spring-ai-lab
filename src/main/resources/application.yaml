@@ -4,7 +4,31 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+  # DATASOURCE
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_ai
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  # REDIS
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+
+  # OPTION: EXCLUDE JDBC STARTER TO WORK WITH REDIS STARTER (PREVENT BEAN INJECTION CONFLICT)
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.ai.model.chat.memory.repository.jdbc.autoconfigure.JdbcChatMemoryRepositoryAutoConfiguration
+
   ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
     stabilityai:
       api-key: ${STABILITY_API_KEY}
       image:
