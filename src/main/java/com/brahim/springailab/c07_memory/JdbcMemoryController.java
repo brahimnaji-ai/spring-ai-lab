@@ -15,7 +15,7 @@ public class JdbcMemoryController {
 
     private final ChatClient chatClient;
 
-    public JdbcMemoryController(ChatClient.Builder builder, @Qualifier("jdbcChatMemory") ChatMemory chatMemory) {
+    public JdbcMemoryController(ChatClient.Builder builder, ChatMemory chatMemory) {
         this.chatClient = builder
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory)

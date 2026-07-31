@@ -1,4 +1,4 @@
-package com.brahim.springailab.config;
+package com.brahim.springailab.config.chat;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.google.genai.GoogleGenAiChatModel;

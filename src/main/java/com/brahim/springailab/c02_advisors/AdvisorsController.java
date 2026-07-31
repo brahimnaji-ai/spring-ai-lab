@@ -20,10 +20,9 @@ public class AdvisorsController {
     private final ChatClient chatClient;
     private final ChatMemory chatMemory;
     private final String CHAT_CLIENT_BEAN_NAME = "geminiChatClient";
-    private final String CHAT_MEMORY_BEAN_NAME = "inMemoryChatMemory";
 ;
     public AdvisorsController(@Qualifier(CHAT_CLIENT_BEAN_NAME) ChatClient chatClient,
-                              @Qualifier(CHAT_MEMORY_BEAN_NAME) ChatMemory chatMemory) {
+                                ChatMemory chatMemory) {
         this.chatClient = chatClient;
         this.chatMemory = chatMemory;
     }

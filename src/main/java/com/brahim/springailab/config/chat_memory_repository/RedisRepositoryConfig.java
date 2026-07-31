@@ -1,25 +1,14 @@
-package com.brahim.springailab.config;
+package com.brahim.springailab.config.chat_memory_repository;
 
-import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.chat.memory.repository.redis.RedisChatMemoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import redis.clients.jedis.RedisClient;
 
-import javax.sql.DataSource;
-
 @Configuration
-public class ChatMemoryRepositoryConfig {
-
-    @Bean
-    @Primary
-    public JdbcChatMemoryRepository jdbcChatMemoryRepository (DataSource dataSource){
-        return JdbcChatMemoryRepository.builder()
-                .dataSource(dataSource)
-                .build();
-    }
-
+@Profile("redis")
+public class RedisRepositoryConfig {
 
     @Bean
     public RedisChatMemoryRepository redisChatMemoryRepository(RedisClient redisClient){

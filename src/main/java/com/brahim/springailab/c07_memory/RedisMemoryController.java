@@ -17,7 +17,7 @@ public class RedisMemoryController {
 
     public RedisMemoryController(
             ChatClient.Builder builder,
-            @Qualifier("redisChatMemory") ChatMemory chatMemory
+            ChatMemory chatMemory
     ){
         this.chatClient = builder
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory)

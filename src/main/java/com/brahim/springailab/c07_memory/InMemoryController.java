@@ -17,7 +17,9 @@ public class InMemoryController {
     private final ChatClient statelessChatClient;
 
     public InMemoryController(ChatClient.Builder builder, ChatMemory chatMemory) {
-        this.statelessChatClient = builder.build();
+        this.statelessChatClient = builder
+                .clone()
+                .build();
         this.chatClient = builder
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory)

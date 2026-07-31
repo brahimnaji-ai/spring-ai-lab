@@ -1,4 +1,4 @@
-package com.brahim.springailab.config;
+package com.brahim.springailab.config.chat;
 
 
 import com.google.genai.Client;
@@ -26,8 +26,8 @@ public class ChatModelConfig {
                 .maxOutputTokens(2048)
                 .build();
         return GoogleGenAiChatModel.builder()
-                .options(options)
                 .genAiClient(client)
+                .options(options)
                 .build();
     }
 
